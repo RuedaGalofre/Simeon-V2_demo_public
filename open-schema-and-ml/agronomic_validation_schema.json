@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SIMEON Agronomic Observation Validation Schema",
+  "description": "Public demonstration schema. It separates original observations from analysis outputs and prevents biomass estimates without a physical field measurement.",
+  "type": "object",
+  "required": [
+    "record_uuid",
+    "record_date",
+    "record_type",
+    "data_source",
+    "measurement_method",
+    "observation_status",
+    "pasture_observation"
+  ],
+  "properties": {
+    "record_uuid": {"type": "string", "format": "uuid", "description": "Immutable traceability identifier for the original record."},
+    "record_date": {"type": "string", "format": "date", "description": "Date on which the observation was taken."},
+    "record_type": {"type": "string", "enum": ["historical", "current"], "description": "Historical records remain distinct from current field observations."},
+    "data_source": {"type": "string", "enum": ["synthetic_demo", "field_form", "imported_register"], "description": "Declared provenance of the record."},
+    "measurement_method": {"type": "string", "minLength": 3, "description": "Method used to obtain the observation."},
+    "observation_status": {"type": "string", "enum": ["recorded", "field_verified", "corrected"], "description": "Validation state without overwriting the original measurement."},
+    "pasture_observation": {
+      "type": "object",
+      "required": ["plot_label", "grass_height_cm", "soil_condition"],
+      "properties": {
+        "plot_label": {"type": "string", "minLength": 1},
+        "grass_height_cm": {"type": "number", "minimum": 0, "maximum": 400},
+        "soil_condition": {"type": "string", "enum": ["very_dry", "dry", "adequate", "wet"]},
+        "rainfall_7d_mm": {"type": "number", "minimum": 0},
+        "physical_biomass_clipping_kg_m2": {"type": ["number", "null"], "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "analysis_output": {
+      "type": "object",
+      "properties": {
+        "analysis_id": {"type": "string", "pattern": "^SIMEON-DEMO-[0-9]{8}-A[0-9]{2}$"},
+        "statistical_review_flag": {"type": "boolean"},
+        "biomass_estimate_kg_m2": {"type": ["number", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pasture_observation": {
+            "properties": {"physical_biomass_clipping_kg_m2": {"type": "null"}},
+            "required": ["physical_biomass_clipping_kg_m2"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "analysis_output": {
+            "properties": {"biomass_estimate_kg_m2": {"type": "null"}}
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
