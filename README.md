@@ -54,5 +54,6 @@ The script checks the schema-relevant columns, fits a small local IsolationFores
 The MIT License in this repository applies only to the public demonstration materials here: the validation schema, synthetic data, standalone demo code, screenshots, and sample reports. It does not grant rights to SIMEON's pre-existing proprietary platform or to any non-public dataset.
 
 ## Responsible use
-
-This demonstration supports record review and discussion with farmers and technicians. It does not diagnose animal or crop health, prescribe treatments, calculate biomass without a physical measurement, or replace field verification.
+## video 
+https://youtu.be/PHp_wH1dvxU
+This demonstration supports record review and discussion with farmers and technicians. It does not diagnose animal or crop health, prescribe treatments, calculate ##biomass without a physical measurement, or replace field verification.
