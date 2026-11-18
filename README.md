@@ -6,7 +6,7 @@ https://scienti.colciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=000
 
 ## Project overview
 
-SIMEON V2.0 Y SUELO is a local-first farm data management and decision-support platform designed in Colombia for smallholder cattle farmers and agricultural technicians in dry-tropic ecosystems.
+SIMEON V2.0 is a local-first farm data management and decision-support platform designed in Colombia for smallholder cattle farmers and agricultural technicians in dry-tropic ecosystems.
 
 It helps organize pasture observations, soil observations, weather logs, and field notes into traceable records for human review.
 
