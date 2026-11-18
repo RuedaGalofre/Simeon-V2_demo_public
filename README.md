@@ -54,7 +54,7 @@ All records in this repository are synthetic demonstration data. The published a
 
 ## Visual documentation
 
-The current SIMEON V2.0 Y SUELO interface is shown in Spanish because it is designed for its local users. The accompanying public documentation is in English.
+The current SIMEON V2.0  interface is shown in Spanish because it is designed for its local users. The accompanying public documentation is in English.
 
 - [English user guide](user-manual/SIMEON_V2_User_Guide_EN.pdf)
 - [Technical report sample](sample-reports/Technical_Report_Sample.pdf)
